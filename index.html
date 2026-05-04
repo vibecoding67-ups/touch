@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catch the Cutie! 🐾</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Screen: Menu -->
+    <div id="screen-menu" class="screen active">
+      <h1>🐾 Catch the Cutie!</h1>
+      <p class="subtitle">Klik makhluk gemoy sebelum kabur!</p>
+
+      <div class="character-select">
+        <div class="char-select-header">
+          <p>Pilih karakter:</p>
+          <button id="btn-add-photo" class="btn-upload-trigger">📸 + Foto</button>
+        </div>
+        <div id="char-list" class="char-grid"></div>
+      </div>
+
+      <!-- Hidden file input -->
+      <input id="file-input" type="file" accept="image/*" style="display:none" />
+
+      <!-- Modal: nama foto -->
+      <div id="modal-upload" class="upload-modal hidden">
+        <div class="upload-modal-box">
+          <p class="modal-title">📸 Tambah Karakter Foto</p>
+          <div class="upload-preview-wrap">
+            <img id="upload-preview" src="" alt="preview" />
+          </div>
+          <input id="upload-name-input" type="text" placeholder="Nama karakter (contoh: Kucingku)" maxlength="20" />
+          <div class="upload-actions">
+            <button id="btn-upload-confirm" class="btn-primary">✅ Simpan</button>
+            <button id="btn-upload-cancel" class="btn-secondary">Batal</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="difficulty-select">
+        <p>Kesulitan:</p>
+        <div class="diff-buttons">
+          <button class="diff-btn active" data-diff="easy">😊 Mudah</button>
+          <button class="diff-btn" data-diff="medium">😤 Sedang</button>
+          <button class="diff-btn" data-diff="hard">😱 Susah</button>
+        </div>
+      </div>
+
+      <button id="btn-start" class="btn-primary">Mulai Main!</button>
+
+      <div id="highscore-display" class="highscore">
+        🏆 High Score: <span id="hs-value">0</span>
+      </div>
+    </div>
+
+    <!-- Screen: Game -->
+    <div id="screen-game" class="screen">
+      <div class="game-header">
+        <div class="stat">⏱ <span id="timer">30</span>s</div>
+        <div class="stat">✨ Skor: <span id="score">0</span></div>
+        <div class="stat">💨 Miss: <span id="misses">0</span></div>
+        <button id="btn-pause" class="btn-small">⏸</button>
+      </div>
+
+      <div id="game-area">
+        <!-- karakter muncul di sini -->
+      </div>
+
+      <div id="combo-display" class="combo hidden">COMBO x<span id="combo-count">0</span>!</div>
+    </div>
+
+    <!-- Screen: Pause -->
+    <div id="screen-pause" class="screen overlay">
+      <div class="modal">
+        <h2>⏸ Pause</h2>
+        <button id="btn-resume" class="btn-primary">Lanjut</button>
+        <button id="btn-quit" class="btn-secondary">Keluar</button>
+      </div>
+    </div>
+
+    <!-- Screen: Game Over -->
+    <div id="screen-gameover" class="screen">
+      <div class="result-card">
+        <h2 id="result-emoji">🎉</h2>
+        <h2>Game Over!</h2>
+        <p>Skor kamu: <strong id="final-score">0</strong></p>
+        <p id="new-highscore-msg" class="hidden">🏆 New High Score!</p>
+        <p>Karakter: <span id="result-char"></span></p>
+        <button id="btn-replay" class="btn-primary">Main Lagi</button>
+        <button id="btn-menu" class="btn-secondary">Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="characters.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
